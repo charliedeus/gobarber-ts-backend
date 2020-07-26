@@ -9,7 +9,7 @@ interface IRequest {
   user_id: string;
   name: string;
   email: string;
-  oldPassword?: string;
+  old_password?: string;
   password?: string;
 }
 
@@ -28,7 +28,7 @@ class UpdateUserAvatarService {
     name,
     email,
     password,
-    oldPassword,
+    old_password,
   }: IRequest): Promise<User> {
     const user = await this.usersRepository.findById(user_id);
 
@@ -45,15 +45,15 @@ class UpdateUserAvatarService {
     user.name = name;
     user.email = email;
 
-    if (password && !oldPassword) {
+    if (password && !old_password) {
       throw new AppError(
         'You need to inform the old password to set a new password',
       );
     }
 
-    if (password && oldPassword) {
+    if (password && old_password) {
       const checkOldPassword = await this.HashProvider.compareHash(
-        oldPassword,
+        old_password,
         user.password,
       );
 
