@@ -69,7 +69,7 @@ describe('UpdateUserAvatar', () => {
       user_id: user.id,
       name: 'Fred Doe',
       email: 'fred.doe@example.com',
-      oldPassword: '123456',
+      old_password: '123456',
       password: 'password',
     });
 
@@ -105,7 +105,7 @@ describe('UpdateUserAvatar', () => {
         user_id: user.id,
         name: 'Fred Doe',
         email: 'fred.doe@example.com',
-        oldPassword: 'wrong-password',
+        old_password: 'wrong-password',
         password: 'password',
       }),
     ).rejects.toBeInstanceOf(AppError);
@@ -117,7 +117,7 @@ describe('UpdateUserAvatar', () => {
         user_id: 'non-existing-user',
         name: 'Fred Doe',
         email: 'fred.doe@example.com',
-        oldPassword: 'wrong-password',
+        old_password: 'wrong-password',
         password: 'password',
       }),
     ).rejects.toBeInstanceOf(AppError);
