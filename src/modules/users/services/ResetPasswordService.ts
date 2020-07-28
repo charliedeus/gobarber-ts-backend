@@ -1,4 +1,3 @@
-import { compare } from 'bcryptjs';
 // import { UserToken } from '@modules/users/infra/typeorm/entities/UserToken';
 import { injectable, inject } from 'tsyringe';
 import { isAfter, addHours } from 'date-fns';
@@ -15,7 +14,7 @@ interface IRequest {
 }
 
 @injectable()
-class SendForgotPasswordEmailService {
+class ResetPasswordService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
@@ -52,4 +51,4 @@ class SendForgotPasswordEmailService {
   }
 }
 
-export default SendForgotPasswordEmailService;
+export default ResetPasswordService;
